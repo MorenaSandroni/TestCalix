@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <record id="credit_group_report" model="ir.ui.view">
+      <field name="name">credit_group_report</field>
+      <field name="model">credit.group.report</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="Reporte de Grupos de Credito">
+          <group>
+            <field name="credit_group_ids" />
+          </group>
+          <footer>
+            <button name="action_generate_xlsx_report" string="Generar Reporte" type="object" class="oe_highlight"/>
+            <button string="Cancelar" special="cancel"/>
+          </footer>
+        </form>
+      </field>
+    </record>
+  
+    <act_window id="action_credit_group_report"
+      name="Reporte de Grupos de Credito"
+      res_model="credit.group.report"
+      view_mode="form"
+      target="new"
+    />
+    <menuitem name="Reporte de Grupos de Credito"
+      action="action_credit_group_report"
+      id="menu_credit_group_report"
+      parent="account.menu_finance_reports"
+    />
+    <report
+        id="report_credit_group_report_xlsx"
+        model="credit.group.report"
+        string="Reporte de Grupos de Credito"
+        report_type="xlsx"
+        name="credit_group_report_xlsx_report"
+        file="credit_group_report_xlsx_report"
+        attachment_use="False"
+    />
+  </data>
+</odoo>
+

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_order_form_inh" model="ir.ui.view">
+        <field name="name">sale.order.form.inh</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='validity_date']" position="before">
+                <field name="sale_channel_id"/>
+                <field name="credit"
+                        decoration-info="credit == 'no_limit'" 
+                        decoration-success="credit == 'available'"
+                        decoration-danger="credit == 'blocked'"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_order_tree_inh" model="ir.ui.view">
+        <field name="name">sale.order.tree.inh</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_status']" position="after">
+                <field name="sale_channel_id"/>
+                <field name="credit"
+                        decoration-info="credit == 'no_limit'" 
+                        decoration-success="credit == 'available'"
+                        decoration-danger="credit == 'blocked'"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_quotation_tree_inh" model="ir.ui.view">
+        <field name="name">sale.quotation.order.tree.inh</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_status']" position="after">
+                <field name="sale_channel_id"/>
+                <field name="credit"
+                        decoration-info="credit == 'no_limit'" 
+                        decoration-success="credit == 'available'"
+                        decoration-danger="credit == 'blocked'"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
